@@ -1,0 +1,369 @@
+############# Heritage Dart
+
+
+
+abstract class IService{  
+ double add(double a,double b);
+ double sub(double a,double b);  
+}
+​
+class ServiceImpl extends IService{
+  @override
+  double add(double a, double b) {
+    // TODO: implement add
+   return a+b;
+  }
+​
+  @override
+  double sub(double a, double b) {
+    // TODO: implement sub
+    return a-b;
+  }
+  
+  
+}
+
+/*
+  output:
+    
+	14
+	110
+    */
+​
+void main() {  
+  
+  IService s=new ServiceImpl();
+  print(s.add(6,8));
+  print(s.add(90,20));
+​
+  }
+
+############## Json to Object
+
+
+import 'dart:convert';
+
+void main() {  
+  var data='[{"id":1,"name":"Ahmed"},{"id":2,"name":"Mohamed"}]';
+  print(data); 
+  var parsedData=json.decode(data);
+  (parsedData as List<dynamic>).forEach((d){
+    
+    print(d['id']);
+  });
+  
+  var person = json.encode(parsedData[0]);
+  print(person);
+  }
+
+
+
+/*
+  output:
+  
+  
+	[{"id":1,"name":"Ahmed"},{"id":2,"name":"Mohamed"}]
+	1
+	2
+	{"id":1,"name":"Ahmed"}
+  
+  */
+
+
+
+#################### parsed json forEach loop
+
+
+
+import 'dart:convert';
+
+void main() {  
+  var data='[{"id":1,"name":"Ahmed"},{"id":2,"name":"Mohamed"}]';
+  print(data); 
+  var parsedData=json.decode(data);
+  (parsedData as List<dynamic>).forEach((d){
+    
+    print(d['id']);
+  });
+  
+  }
+
+
+
+/*
+  output:
+  
+  [{"id":1,"name":"Ahmed"},{"id":2,"name":"Mohamed"}]
+	1
+	2
+  
+  */
+
+########### Parsed Json
+
+
+import 'dart:convert';
+
+void main() {  
+  var data='[{"id":1,"name":"Ahmed"},{"id":2,"name":"Mohamed"}]';
+  print(data); 
+  var parsedData=json.decode(data);
+  print(parsedData);
+  for(var p in parsedData){
+    
+    print(p['name']);
+  }
+  
+  }
+
+/*
+  output:
+  
+  [{"id":1,"name":"Ahmed"},{"id":2,"name":"Mohamed"}]
+  [{id: 1, name: Ahmed}, {id: 2, name: Mohamed}]
+  Ahmed
+  Mohamed
+  
+  */
+
+
+######################Dynamic table
+
+void main() {
+var data =[
+  {
+    'title':'Q1',
+    'answers':[
+      
+      {'answer':'Answer 11','correct':false},
+      {'answer':'Answer 12','correct':true},
+      {'answer':'Answer 13','correct':false},      
+    ]   
+  } ,
+   {
+    'title':'Q2',
+    'answers':[
+      
+      {'answer':'Answer 21','correct':true},
+      {'answer':'Answer 22','correct':false},
+      {'answer':'Answer 23','correct':false},      
+    ]   
+  }
+ ];
+  data.forEach((q){    
+    print(q['title']);
+    (q['answers'] as List<dynamic>).forEach((a){      
+      print('\t => ${a['answer']}');
+    });    
+  });
+  }
+
+
+/*
+output:
+Q1
+	 => Answer 11
+	 => Answer 12
+	 => Answer 13
+Q2
+	 => Answer 21
+	 => Answer 22
+	 => Answer 23
+*/
+
+
+
+######### List declaration var
+
+
+class Person{
+  int id;
+  String name;
+  
+ // Person(this.id,this.name);
+  Person({this.id,this.name});
+}
+
+void main() {
+  var perslist = [  Person(id:1,name:'ahmed'),  Person(id:4,name:'joti')];
+  
+  perslist.forEach((p){
+    
+    print(p.name);
+  });
+  }
+  
+  
+ /*
+  output:
+  
+  ahmed
+  joti
+  
+  */
+  
+  
+  
+  ######################## List with for each loop 
+  
+  class Person{
+  int id;
+  String name;
+  
+ // Person(this.id,this.name);
+  Person({this.id,this.name});
+}
+
+void main() {
+  List<Person> perslist = new List();
+  perslist.add(Person(id:1,name:'ahmed'));
+  perslist.add(Person(id:4,name:'joti'));
+  
+  perslist.forEach((p){
+    
+    print(p.name);
+  });
+  }
+  
+  
+  
+  
+  
+  /*
+  output:
+  
+  ahmed
+  joti
+  
+  */
+  
+  
+  
+  
+  
+  ################################ List with for loop 
+  
+  class Person{
+  int id;
+  String name;
+  
+ // Person(this.id,this.name);
+  Person({this.id,this.name});
+}
+
+void main() {
+  List<Person> perslist = new List();
+  perslist.add(Person(id:1,name:'ahmed'));
+  perslist.add(Person(id:4,name:'joti'));
+  
+  for(Person p in perslist){
+    
+    print(p.name);
+  }
+  }
+
+
+
+
+/*
+  output:
+  
+  ahmed
+  joti
+  
+  */
+  
+  
+  
+  
+  
+#########constructor type (Dart Version)
+
+
+class Person{
+  int id;
+  String name;
+  
+ // Person(this.id,this.name);
+  Person({this.id,this.name});
+}
+
+void main() {
+Person p1 = Person(name:'Ahmed');
+  print('Person(id=${p1.id},name=${p1.name})');
+  }
+
+
+
+
+/*
+  output:
+  
+  Person(id=null,name=Ahmed)
+  
+  */
+
+
+
+
+
+################## Constructor type 2
+
+class Person{
+  int id;
+  String name;
+  
+  Person(this.id,this.name){
+    
+    this.id=id;
+    this.name=name;
+  }
+}
+
+void main() {
+Person p1 = Person(1,'Ahmed');
+  print('Person(id=${p1.id},name=${p1.name})');
+  }
+
+
+/*
+  output:
+  
+  Person(id=1,name=Ahmed)
+  
+  */
+  
+  
+  
+  
+  
+############### MAP
+
+class Person{
+  int id;
+  String name;
+  
+  Person(this.id,this.name){
+    
+    this.id=id;
+    this.name=name;
+  }
+}
+
+void main() {
+Map<String,dynamic> data = new Map();
+  data['p1']={'id':1,'name':'Ahmed'};
+  data['p2']={'id':2,'name':'joti'};
+  data.keys.forEach((k){
+    
+    print('key=$k, person=${data[k]['name']}');
+  });
+  }
+  
+  /*
+  output:
+  
+  key=p1, person=Ahmed
+  key=p2, person=joti
+  
+  */
