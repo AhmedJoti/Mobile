@@ -52,7 +52,8 @@ class _QuizState extends State<Quiz> {
                   RaisedButton(
                     onPressed: (){
                       setState(() {
-
+                        this.currentQuestion=0;
+                        this.score=0;
                       });
 
                     },
