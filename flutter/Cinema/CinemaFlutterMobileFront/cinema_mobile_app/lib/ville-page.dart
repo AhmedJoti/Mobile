@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import './cinemas-page.dart';
+import './GlobalVariables.dart';
 
 class VillePage extends StatefulWidget {
   @override
@@ -52,13 +53,18 @@ class _VillePageState extends State<VillePage> {
   }
 
   void loadVilles() {
-    String url = "http://192.168.1.102:8080/villes";
+
+//    String url = "http://192.168.1.102:8080/villes";
+    String url = GlobalData.host+"/villes";
+
     http.get(url).then((resp) {
       setState(() {
         this.listVilles = jsonDecode(resp.body)['_embedded']['villes'];
+
       });
     }).catchError((err) {
       print(err);
     });
+
   }
 }
