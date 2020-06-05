@@ -29,15 +29,26 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green,
       appBar: AppBar(
-        title: Text("Cinema Page"),
+        title: Text("Ahmed Joti"),
       ),
-      body: Center(
-        child: Text(
-          "Home Cinema",
-          style: TextStyle(color: Colors.lightBlue),
-        ),
+      body:
+      Center(
+
+
+
+
+              child: Text(
+                "Ahmed_Developpement(Mobile)",
+                style: TextStyle(color: Colors.white,fontSize: 25,),
+
+          ),
+
+
+
       ),
+
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
